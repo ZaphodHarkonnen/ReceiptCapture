@@ -19,6 +19,16 @@
     <%= f.label :total %><br />
     <%= f.text_field :total %>
   </div>
+	<div>
+		<%= @receipt.line_items.each do |line_item| %>
+			<%= f.fields_for line_item, :index => line_item do |line_item_form| %>
+				<div class="field">
+					<%= line_item_form.label :name %><br />
+					<%= line_item_form.text_field :name %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>
