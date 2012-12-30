@@ -1,0 +1,30 @@
+<h1>Listing receipts</h1>
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Total</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @receipts.each do |receipt| %>
+  <tr>
+    <td><%= receipt.company %></td>
+    <td class="currency"><%= number_to_currency(receipt.total) %></td>
+    <td><%= link_to 'Show', receipt %></td>
+    <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
+    <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+	<tr>
+		<td>Grand Total</td>
+		<td ><%= number_to_currency(@receipts.sum(&:total)) %></td>
+		<td colspan="3" />
+	</tr>
+</table>
+
+<br />
+
+<%= link_to 'New Receipt', new_receipt_path %>
