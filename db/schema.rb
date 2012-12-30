@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230025956) do
+ActiveRecord::Schema.define(:version => 20121230044816) do
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "receipt_id"
+    t.string   "name"
+    t.decimal  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "receipts", :force => true do |t|
     t.string   "company"
